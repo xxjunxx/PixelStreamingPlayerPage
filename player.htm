@@ -2,19 +2,37 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<!-- <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 	<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"> -->
-	<link type="text/css" rel="stylesheet" href="public/player.css">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+	<link type="text/css" rel="stylesheet" href="/css/player.css">
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    <script type="text/javascript" src="scripts/webRtcPlayer.js"></script>
-    <script type="text/javascript" src="scripts/app.js"></script>
+    <script type="text/javascript" src="/js/webRtcPlayer.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
 </head>
 
 <body onload="load()">
 	<div id="playerUI">
+		<div id="menu">
+			<div>
+				<button id="move-box-button">print Hello world</button>
+			</div>
+			<hr>
+			<div>
+				<input type="text" id="text-input" id="text-input">
+				<button id="print-text-button">print</button>
+			</div>
+			<hr>
+			<div>
+				<p style="color: aliceblue" id="current-time-text">Game Time:</p>
+			</div>
+			<hr>
+			<div>
+				<p style="color: aliceblue" id="button-click-text">Button:</p>
+			</div>
+		</div>
 		<div id="player"></div>
 		<div id="overlay" class="overlay">
 			<div id="overlayButton" onclick="onExpandOverlay_Click()">+</div>

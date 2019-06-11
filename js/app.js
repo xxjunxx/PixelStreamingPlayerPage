@@ -21,6 +21,9 @@ function log(str) {
     console.log(`${Math.floor(Date.now() - t0)}: ` + str);
 }
 
+var currentTimeText;
+var buttonClickText;
+
 function setupHtmlEvents(){
 	//Window events
 	window.addEventListener('resize', resizePlayerStyle, true);
@@ -121,6 +124,52 @@ function setupHtmlEvents(){
 		kickButton.onclick = function(event){
 			socket.emit('kick', {});
 		}
+	}
+
+	let moveBoxButton = document.getElementById('move-box-button');
+	if (moveBoxButton != null) {
+		moveBoxButton.onclick = function(event) {
+			let consoleDescriptor =  {
+				msgToPrint: 'hello world'
+			}
+			emitUIInteraction(consoleDescriptor);
+		}
+	}
+
+	let textToPrint = document.getElementById('text-input');
+	let printTextButton = document.getElementById('print-text-button');
+	if (printTextButton != null) {
+		printTextButton.onclick = function(event) {
+			if (textToPrint != null) {
+				let consoleDescriptor =  {
+					msgToPrint: textToPrint.value
+				}
+				emitUIInteraction(consoleDescriptor);
+			}
+		}
+
+	}
+
+	currentTimeText = document.getElementById("current-time-text");
+	buttonClickText = document.getElementById("button-click-text");
+	addResponseEventListener("handle_responses", myHandleResponseFunction);
+}
+
+
+function myHandleResponseFunction(data) {
+	//console.log(data);
+	json = JSON.parse(data);
+	switch (json.msg) {
+        case "currentTime":
+			if (currentTimeText != null) {
+				currentTimeText.innerHTML = "Current Time:" + json.time;
+			}
+			break;
+		case "clickButton":
+			if (buttonClickText != null) {
+				buttonClickText.innerHTML = "Button:" + json.button;
+			}
+			break;
 	}
 }
 

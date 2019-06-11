@@ -14,15 +14,17 @@
 
 body{
     margin: 0px;
-    background-color: black;
+	background-color: black;
 }
 
 #playerUI {
-	width: 100%;
-	position: absolute;
-	/*top: 0;
-	left: 0;*/
-	z-index: 10;
+	height: 100%;
+    width: 100%;
+    /* position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10; */
+    display: flex;
 }
 
 #statsContainer{
@@ -49,11 +51,18 @@ video{
 	height: 100%;
 }
 
+#menu {
+    width: 20%;
+    height: 100%;
+}
+
 #player{
-	width: 1280px;
-	height: 720px;
-	position: relative;
-	background-color: #000;
+	/* width: 1280px;
+    height: 720px;
+    position: relative; */
+    width: 80%;
+    height: 100%;    
+    background-color: #000;
 }
 
 #overlay{
